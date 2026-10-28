@@ -1,0 +1,7 @@
+config.php
+error_log
+*.log
+*.sql
+!database/schema.sql
+.DS_Store
+vendor/

@@ -1,0 +1,22 @@
+# START MultiPHP Version (diatur cPanel - jangan diubah manual)
+<FilesMatch "\.(php4|php5|php3|php2|php|phtml)$">
+    SetHandler application/x-httpd-alt-php74___lsphp
+</FilesMatch>
+# END MultiPHP Version
+
+Options -Indexes
+
+# Blokir file sensitif
+<FilesMatch "(^config\.php$|^config\.example\.php$|error_log|\.(sql|md|log|lock|json|gitignore)$)">
+    Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(database|fungsi)/ - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
